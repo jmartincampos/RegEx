@@ -137,14 +137,93 @@ In this example, the character class [0-9a-fA-F] matches any single hexadecimal 
 
 Character classes provide a powerful way to match specific sets of characters within a regular expression, allowing for more precise pattern matching in text data.
 ### Flags
+Flags in regular expressions are optional parameters that modify the behavior of the pattern matching. They are appended to the end of the regular expression and alter how the matching is performed. Here are some common flags:
 
+i: Case-insensitive matching.
+g: Global matching (find all matches rather than stopping after the first match).
+m: Multi-line matching (treats beginning and end characters (^ and $) as working across multiple lines).
+s: Dot-all matching (treats the dot (.) as matching any character, including newlines).
+u: Unicode matching (treats the pattern and subject strings as UTF-16 encoded).
+y: Sticky matching (matches only from the index indicated by the lastIndex property of the RegExp object).
+Here is a simple example of a # FLAG 
+                    /cat/i
+    - Matches: "cat", "Cat", "cAt", "CAT", etc.
+In this example, the i flag makes the regular expression case-insensitive, so it matches "cat" regardless of whether it's in uppercase or lowercase.
+
+Here is a more compex example:
+                    /cat/gi
+    - Matches: "cat", "Cat", "cAt", "CAT", etc., and all occurrences in the text. 
+In this example, the g flag makes the regular expression global, so it matches all occurrences of "cat" in the text. The i flag still makes it case-insensitive, allowing it to match variations of "cat" regardless of case.
+
+Flags provide flexibility in how regular expressions are applied, allowing for more customizable and powerful pattern matching in text data.
 ### Grouping and Capturing
+Grouping and capturing in regular expressions allow you to define subpatterns within your regex and capture the matched substrings for later use. They are denoted by parentheses () and are useful for applying quantifiers or alternations to multiple characters or groups.
 
+Here's the breakdown:
+
+Grouping ( ): Groups parts of the regular expression together. This allows you to apply quantifiers or alternations to multiple characters or groups.
+Capturing ( ... ): In addition to grouping, capturing allows you to capture the matched substring enclosed within the parentheses.
+
+Here's a simple example:
+                    /(cat)/1\
+    -Matches: "catcat
+    -Does NOT match: "cat"
+In this example, (cat) is a capturing group that matches the substring "cat". \1 is a backreference to the first captured group (cat). This regex matches the repeated substring "catcat" 
+                    /(John) (Doe)/
+    -Matches: "John Doe"
+    -Does NOT match: "JohnDoe","Doe John"
+In this example, (John) and (Doe) are capturing groups that match the first and last name, respectively. The space between them ensures that both parts are present and in the correct order.
+
+Grouping and capturing allow you to structure your regular expressions more effectively and extract specific parts of the matched text for further processing or validation. They are essential tools for working with complex patterns in text data.
 ### Bracket Expressions
+Bracket expressions and character classes refer to the same concept in regular expressions. Both terms describe the use of square brackets [ ] to define a set of characters that can match at a specific position in the text.
+
+The terms "bracket expressions" and "character classes" are often used interchangeably to describe this feature of regular expressions. They provide a way to specify a group of characters that can be matched at a single position, allowing for flexible pattern matching in text data. See above example for context.
 
 ### Greedy and Lazy Match
 
+Greedy and lazy matching in regular expressions refer to the behavior of quantifiers when matching patterns in text.
+
+Greedy matching: The default behavior of quantifiers, where they match as much of the string as possible while still allowing the overall pattern to match. Greedy quantifiers are denoted by appending *, +, ?, or {} to the pattern.
+Lazy (or non-greedy) matching: A mode where quantifiers match as little of the string as possible, only consuming as many characters as needed for the overall pattern to match. Lazy quantifiers are denoted by appending *?, +?, ??, or {} to the pattern.
+
+Here are examples to illustrate the difference:
+1 - Greedy matching:
+                /(.*\d)/
+
+- String: "1234567890"
+- Greedy match: "1234567890"
+
+In this example, the `.*` quantifier matches as many characters as possible (greedy behavior) until it encounters a digit `\d`. As a result, the entire string is consumed and matched.
+
+2-  Lazy (non-greedy) matching:
+                /(.*?\d)/
+
+- String: "1234567890"
+- Lazy match: "1"
+
+In this example, the `.*?` quantifier matches as few characters as possible (lazy behavior) until it encounters a digit `\d`. As a result, only the first character "1" is matched, allowing the overall pattern to still match.
+
+Greedy and lazy matching behavior can significantly impact the behavior of regular expressions, especially when dealing with patterns that contain multiple quantifiers. Understanding and appropriately using greedy and lazy quantifiers is crucial for writing efficient and accurate regular expressions.
+
 ### Boundaries
+Boundary assertions in regular expressions define positions in the text where certain conditions must be met for a match to occur. These assertions don't consume any characters themselves, but they assert that certain conditions must be true at a particular position in the text.
+
+Here's the breakdown:
+
+Boundary assertions: Specify positions in the text where certain conditions must be met for a match to occur.
+Common boundary assertions include:
+^: Matches the beginning of a line.
+$: Matches the end of a line.
+\b: Matches a word boundary (a position between a word character and a non-word character).
+\B: Matches a non-word boundary.
+\A: Matches the beginning of the text.
+\Z: Matches the end of the text (or before a newline at the end of the text).
+\z: Matches the end of the text.
+Here's a simple example:
+
+
+
 
 ### Back-references
 
