@@ -1,14 +1,14 @@
-# Title (replace with your title)
+# RegEx Tutorial
 
-Welcome to RegEx Tutorial - Watching an email address.  In this tutorial, we wil navigate how to use regular expressions to validate and match email addresses.  
+Welcome to RegEx Tutorial.  In this tutorial, we wil navigate how to use regular expressions to validate and match specific criteria
 
 
 ## Summary
 
 What exactly is RegEx?
- A regex, short for regular expression, is a sequence of characters that defines a specific search pattern. In this tutorial, we'll focus on understanding and using a regular expression to match email addresses.
+ A regex, short for regular expression, is a sequence of characters that defines a specific search pattern. In this tutorial, we'll defining and providing examples for context.
 
- The regular expression `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/` are used to match email addresses.
+ The regular expression `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/` to match specific criteria.
 
 
 
@@ -163,11 +163,15 @@ Grouping ( ): Groups parts of the regular expression together. This allows you t
 Capturing ( ... ): In addition to grouping, capturing allows you to capture the matched substring enclosed within the parentheses.
 
 Here's a simple example:
+                   
                     /(cat)/1\
+    
     -Matches: "catcat
     -Does NOT match: "cat"
 In this example, (cat) is a capturing group that matches the substring "cat". \1 is a backreference to the first captured group (cat). This regex matches the repeated substring "catcat" 
+                   
                     /(John) (Doe)/
+    
     -Matches: "John Doe"
     -Does NOT match: "JohnDoe","Doe John"
 In this example, (John) and (Doe) are capturing groups that match the first and last name, respectively. The space between them ensures that both parts are present and in the correct order.
@@ -186,7 +190,7 @@ Greedy matching: The default behavior of quantifiers, where they match as much o
 Lazy (or non-greedy) matching: A mode where quantifiers match as little of the string as possible, only consuming as many characters as needed for the overall pattern to match. Lazy quantifiers are denoted by appending *?, +?, ??, or {} to the pattern.
 
 Here are examples to illustrate the difference:
-1 - Greedy matching:
+      1 - Greedy matching:
                 /(.*\d)/
 
 - String: "1234567890"
@@ -266,6 +270,7 @@ Look-ahead and look-behind assertions: Assert whether a certain pattern is (or i
 They do not consume any characters themselves, only asserting whether a certain condition is met at a specific position in the text.
 
 Here is an easy example:
+
 Matching a word followed by a coma:
                 /\w+(?=,)/
         - Matches: "hello" in "hello,", "world" in "world,"
@@ -273,6 +278,7 @@ Matching a word followed by a coma:
 In this example, (?=,) is a positive look-ahead assertion that asserts the presence of a comma , after the word \w+. This regex matches words that are followed by a comma.
 
 And here's a more challenging example:
+
 Matching a word preceded by a certain prefix:
                  \/(?<=prefix )\w+/
         - Matches: "word" in "prefix word"
