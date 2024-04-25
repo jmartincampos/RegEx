@@ -57,6 +57,7 @@ This tutorial was authored by Jonathan M. Campos. You can find more of my work o
 Source code: 
 https://github.com/coding-boot-camp/bug-free-goggles.git
 Repo:
+https://github.com/jmartincampos/RegEx.git
 
 Feel free to explore each section to gain a deeper understanding of regular expressions. Happy regex matching!
 
