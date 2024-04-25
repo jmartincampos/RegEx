@@ -88,18 +88,15 @@ A quantifier in regular expressions specifies the quantity or repetition of a ch
 {n,}: Matches n or more occurrences of the preceding character or group.
 {n,m}: Matches between n and m occurrences of the preceding character or group.
 
-# Here are some examples of how quantifiers work.
-# 1.
+ Here are some examples of how quantifiers work.
 a*: Matches zero or more occurrences of  the letter "a".
 Matches: "", "a", "aa", "aaa", ...
 Does not match: "b", "ab", "ba", ... 
 
-# 2.
 b+: Matches one or more occurrences of the letter "b".
 Matches: "b", "bb", "bbb", ...
 Does not match: "", "a", "ab", ...
 
-# 3
 f{1,3}: Matches between one and three occurrences of the letter "f".
 Matches: "f", "ff", "fff"
 Does not match: "", "ffff", "fffff", ...
@@ -156,6 +153,7 @@ Here is a more compex example:
 In this example, the g flag makes the regular expression global, so it matches all occurrences of "cat" in the text. The i flag still makes it case-insensitive, allowing it to match variations of "cat" regardless of case.
 
 Flags provide flexibility in how regular expressions are applied, allowing for more customizable and powerful pattern matching in text data.
+
 ### Grouping and Capturing
 Grouping and capturing in regular expressions allow you to define subpatterns within your regex and capture the matched substrings for later use. They are denoted by parentheses () and are useful for applying quantifiers or alternations to multiple characters or groups.
 
@@ -175,13 +173,13 @@ In this example, (cat) is a capturing group that matches the substring "cat". \1
 In this example, (John) and (Doe) are capturing groups that match the first and last name, respectively. The space between them ensures that both parts are present and in the correct order.
 
 Grouping and capturing allow you to structure your regular expressions more effectively and extract specific parts of the matched text for further processing or validation. They are essential tools for working with complex patterns in text data.
+
 ### Bracket Expressions
 Bracket expressions and character classes refer to the same concept in regular expressions. Both terms describe the use of square brackets [ ] to define a set of characters that can match at a specific position in the text.
 
 The terms "bracket expressions" and "character classes" are often used interchangeably to describe this feature of regular expressions. They provide a way to specify a group of characters that can be matched at a single position, allowing for flexible pattern matching in text data. See above example for context.
 
 ### Greedy and Lazy Match
-
 Greedy and lazy matching in regular expressions refer to the behavior of quantifiers when matching patterns in text.
 
 Greedy matching: The default behavior of quantifiers, where they match as much of the string as possible while still allowing the overall pattern to match. Greedy quantifiers are denoted by appending *, +, ?, or {} to the pattern.
@@ -285,5 +283,4 @@ Look-ahead and look-behind assertions provide a powerful way to assert condition
 
 
 ## Author
-
 A short section about the author with a link to the author's GitHub profile (https://github.com/jmartincampos)
