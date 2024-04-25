@@ -272,17 +272,21 @@ They do not consume any characters themselves, only asserting whether a certain 
 Here is an easy example:
 
 Matching a word followed by a coma:
+
                 /\w+(?=,)/
         - Matches: "hello" in "hello,", "world" in "world,"
         - Does not match: "hello" in "hello world"
+
 In this example, (?=,) is a positive look-ahead assertion that asserts the presence of a comma , after the word \w+. This regex matches words that are followed by a comma.
 
 And here's a more challenging example:
 
 Matching a word preceded by a certain prefix:
+
                  \/(?<=prefix )\w+/
         - Matches: "word" in "prefix word"
         - Does not match: "word" in "prefix suffix word"
+
 In this example, (?<=prefix ) is a positive look-behind assertion that asserts the presence of the prefix "prefix" before the word \w+. This regex matches words that are preceded by the specific prefix "prefix".
 
 Look-ahead and look-behind assertions provide a powerful way to assert conditions on the text surrounding a pattern without including the matched text in the overall match, allowing for more complex and precise pattern matching in text data.                
