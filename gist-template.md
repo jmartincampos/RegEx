@@ -8,7 +8,7 @@ Welcome to RegEx Tutorial - Watching an email address.  In this tutorial, we wil
 What exactly is RegEx?
  A regex, short for regular expression, is a sequence of characters that defines a specific search pattern. In this tutorial, we'll focus on understanding and using a regular expression to match email addresses.
 
- The regular expression `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/` is used to match email addresses.
+ The regular expression `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/` are used to match email addresses.
 
 
 
@@ -221,14 +221,69 @@ $: Matches the end of a line.
 \Z: Matches the end of the text (or before a newline at the end of the text).
 \z: Matches the end of the text.
 Here's a simple example:
+            /^hello/
+    - Matches: "hello world"
+    - Does not match: "world hello"
+In this example, ^ asserts that the pattern hello must appear at the beginning of a line for a match to occur.
 
+And here's a more complicated example:
+            /\bcat\b/
+    - Matches: "cat", "The cat is black."
+    - Does not match: "cats", "scatter"
+In this example, \b asserts that the pattern cat must be surrounded by word boundaries for a match to occur. This ensures that the regex matches the whole word "cat" and not part of a larger word like "cats" or "scatter".
 
-
+Boundary assertions provide a powerful way to define precise conditions for matches in regular expressions, allowing for more accurate pattern matching in text data.
 
 ### Back-references
+Back-references in regular expressions allow you to refer back to previously captured groups within the same regular expression pattern. They are denoted by \ followed by a digit representing the index of the captured group.
+
+Here's the breakdown:
+
+Back-references: Refer back to previously captured groups within the same regular expression pattern.
+They allow you to match the same text that was previously matched by a capturing group.
+Back-references are particularly useful when you want to match repeated occurrences of the same text.
+Here's an easy example:
+
+Matching repeated words:
+                /(\w+) \1/
+        - Matches: "hello hello", "cat cat"
+        - Does not match: "hello world", "cat dog"
+In this example, (\w+) captures a word, and \1 is a back-reference to the first captured group. This regex matches repeated occurrences of the same word separated by a space.
+
+And here's a more difficult example:
+Matching repeated HTML tags:
+                /<(\w+)>\s*.*<\/\1>/
+        - Matches: "<div>some content</div>", "<p>more content</p>"
+        - Does not match: "<div>some content</p>", "<p>more content</div>"
+In this example, <(w+)> captures an HTML tag, \s* matches optional whitespace, .* matches any content between the opening and closing tags, and </\1> is a back-reference to the name of the opening tag. This regex matches pairs of HTML tags with matching opening and closing tags and any content in between.
+
+Back-references provide a powerful way to match repeated occurrences of the same text within a regular expression pattern, allowing for more flexible and precise pattern matching in text data.
 
 ### Look-ahead and Look-behind
+Look-ahead and look-behind assertions in regular expressions allow you to assert whether a certain pattern is (or is not) followed or preceded by another pattern, without including the matched text in the overall match. They are denoted by (?= ... ) for positive look-ahead, (?<= ... ) for positive look-behind, (?! ... ) for negative look-ahead, and (?<! ... ) for negative look-behind.
+
+Here's the breakdown:
+
+Look-ahead and look-behind assertions: Assert whether a certain pattern is (or is not) followed or preceded by another pattern.
+They do not consume any characters themselves, only asserting whether a certain condition is met at a specific position in the text.
+
+Here is an easy example:
+Matching a word followed by a coma:
+                /\w+(?=,)/
+        - Matches: "hello" in "hello,", "world" in "world,"
+        - Does not match: "hello" in "hello world"
+In this example, (?=,) is a positive look-ahead assertion that asserts the presence of a comma , after the word \w+. This regex matches words that are followed by a comma.
+
+And here's a more challenging example:
+Matching a word preceded by a certain prefix:
+                 \/(?<=prefix )\w+/
+        - Matches: "word" in "prefix word"
+        - Does not match: "word" in "prefix suffix word"
+In this example, (?<=prefix ) is a positive look-behind assertion that asserts the presence of the prefix "prefix" before the word \w+. This regex matches words that are preceded by the specific prefix "prefix".
+
+Look-ahead and look-behind assertions provide a powerful way to assert conditions on the text surrounding a pattern without including the matched text in the overall match, allowing for more complex and precise pattern matching in text data.                
+
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+A short section about the author with a link to the author's GitHub profile (https://github.com/jmartincampos)
